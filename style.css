@@ -1,3 +1,8 @@
+#mySidebar a h3:hover {
+    color: #2d4501; /* <-- choose whatever color you want */
+    transition: color 0.3s ease;
+  }
+
 .filter-buttons {
     margin-bottom: 20px;
   }
