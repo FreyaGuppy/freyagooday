@@ -15,38 +15,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<script>
-  function resizeMasonryItems() {
-    const gallery = document.querySelector('.gallery');
-    const rowHeight = parseInt(window.getComputedStyle(gallery).getPropertyValue('grid-auto-rows'));
-    const gap = parseInt(window.getComputedStyle(gallery).getPropertyValue('gap'));
-  
-    gallery.querySelectorAll('img:not(.hidden)').forEach(img => {
-      const itemHeight = img.getBoundingClientRect().height;
-      const rowSpan = Math.ceil((itemHeight + gap) / (rowHeight + gap));
-      img.style.gridRowEnd = `span ${rowSpan}`;
-    });
-  }
-  
-  window.addEventListener('load', resizeMasonryItems);
-  window.addEventListener('resize', resizeMasonryItems);
-  document.querySelectorAll('.gallery img').forEach(img => {
-    img.addEventListener('load', resizeMasonryItems);
-  });
-  
-  // Ensure layout updates when filtering
-  function filterImages(category) {
-    const images = document.querySelectorAll('.gallery img');
-    images.forEach(img => {
-      if (category === 'all' || img.dataset.category === category) {
-        img.classList.remove('hidden');
-      } else {
-        img.classList.add('hidden');
-      }
-    });
-    resizeMasonryItems();
-  }
-  </script>
+ 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
 <!-- Sidebar/menu -->
@@ -81,20 +50,41 @@
       </div>
 
   <!-- Photo grid prints-->
-  <div class="gallery">
-    <img src="images/painting/thecheesestandsalone.jpg" data-category="painting" onclick="onClick(this)" alt='<p><i>The Cheese Stands Alone</i></p><p>2-13 (1 not pictured)</p><p>Each 5.5" x 5.5"<p>2025</p><p>Oil on Wood Panel'>
-    <img src="images/printmaking/1000babysnails.jpg" data-category="printmaking" onclick="onClick(this)" alt='<p><i>One Thousand Baby Snails</i></p><p>1/3-3/3</p><p>22" x 22"<p>2025</p><p>Woodblock Relief'>
-    <img src="images/painting/sneak.jpg" data-category="painting" style="width:100%" onclick="onClick(this)" alt='<p><i>Sneak</i></p><p>18" x 24"</p><p>2025</p><p>Oil on Canvas</p>'>
-    <img src="images/painting/dumpster1.jpg" data-category="painting" style="width:100%" onclick="onClick(this)" alt='<p><i>Dumpster 01</i></p><p>2025</p><p>Oil on Foamcore</p>'>
-    <img src="images/printmaking/entry028.jpg" data-category="printmaking" onclick="onClick(this)" alt='<p><i>Entry 028</i></p><p>1/6</p><p>8"x10"</p><p>2025</p><p>Linoleum Relief, Coffee Dyed Paper, Pen</p>'>
-    <img src="images/painting/rainy.jpg" data-category="painting" onclick="onClick(this)" alt='<p><i>My Dear Friend Rainy</i><p/><p>2024</p><p>Oil on Canvas, Pinecone</p>'>
-    <img src="images/printmaking/process.jpg" data-category="printmaking" onclick="onClick(this)" alt='<p><i>A Process Has Occurred</i></p><p>14/14</p><p>9" x 11"</p><p>2024</p><p>Linoleum Multiblock Relief, Dyed Paper</p>'>
-    <img src="images/printmaking/adream.jpg" data-category="printmaking" onclick="onClick(this)" alt='<p><i>A Dream</i><p/><p>1/12</p><p>2024</p><p>Screen Print</p>'>
-    <img src="images/printmaking/bugcomic.jpg" data-category="printmaking" onclick="onClick(this)" alt="<p>Volumes 1-3 of the <i>Something That Happened</i> series</p><p>2023-2024</p><p>Screen Print</p>">    
-    <img src="images/printmaking/greenhouse.jpg" data-category="printmaking" onclick="onClick(this)" alt="<p><i>The Green House</i></p><p>Artist Proof</p><p>2023</p><p>Screen Print</p>">
-    <img src="images/printmaking/precipitating.jpg" data-category="printmaking" onclick="onClick(this)" alt="<p><i>Precipitating</i></p><p>2023</p><p>Screen Print</p>">
-    <img src="images/painting/mural1.jpg" data-category="painting" onclick="onClick(this)" alt="<p><i>Garden Mural</i></p><p>2023</p><p>Collaberative Mural</p>">
-    <img src="images/painting/mural2.jpg" data-category="painting" onclick="onClick(this)" alt="<p><i>Garden Mural</i></p><p>2023</p><p>Collaberative Mural</p>">
+  <div class="gallery w3-row">
+    <div class="w3-third">
+      <img src="images/painting/thecheesestandsalone.jpg" data-category="painting" style="width:100%" onclick="onClick(this)" alt='<p><i>The Cheese Stands Alone</i></p><p>2-13 (1 not pictured)</p><p>Each 5.5" x 5.5"<p>2025</p><p>Oil on Wood Panel'>
+      <img src="images/painting/dumpster1.jpg" data-category="painting" style="width:100%" onclick="onClick(this)" alt='<p><i>Dumpster 01</i></p><p>2025</p><p>Oil on Foamcore</p>'>
+      <img src="images/printmaking/process.jpg" data-category="printmaking" style="width:100%" onclick="onClick(this)" alt='<p><i>A Process Has Occurred</i></p><p>14/14</p><p>9" x 11"</p><p>2024</p><p>Linoleum Multiblock Relief, Dyed Paper</p>'>
+      <img src="images/painting/mural1.jpg" data-category="painting" style="width:100%" onclick="onClick(this)" alt="<p><i>Garden Mural</i></p><p>2023</p><p>Collaberative Mural</p>">
+      
+    </div>
+
+    <div class="w3-third">
+      <img src="images/printmaking/1000babysnails.jpg" data-category="printmaking" style="width:100%" onclick="onClick(this)" alt='<p><i>One Thousand Baby Snails</i></p><p>1/3-3/3</p><p>22" x 22"<p>2025</p><p>Woodblock Relief'>
+      <img src="images/printmaking/entry028.jpg" data-category="printmaking" style="width:100%" onclick="onClick(this)" alt='<p><i>Entry 028</i></p><p>1/6</p><p>8"x10"</p><p>2025</p><p>Linoleum Relief, Coffee Dyed Paper, Pen</p>'>
+      <img src="images/printmaking/bugcomic.jpg" data-category="printmaking" style="width:100%" onclick="onClick(this)" alt="<p>Volumes 1-3 of the <i>Something That Happened</i> series</p><p>2023-2024</p><p>Screen Print</p>">
+      <img src="images/painting/mural2.jpg" data-category="painting" style="width:100%" onclick="onClick(this)" alt="<p><i>Garden Mural</i></p><p>2023</p><p>Collaberative Mural</p>">
+
+    </div>
+    
+    <div class="w3-third">
+      <img src="images/painting/sneak.jpg" data-category="painting" style="width:100%" onclick="onClick(this)" alt='<p><i>Sneak</i></p><p>18" x 24"</p><p>2025</p><p>Oil on Canvas</p>'>
+      <img src="images/printmaking/adream.jpg" data-category="printmaking" style="width:100%" onclick="onClick(this)" alt='<p><i>A Dream</i><p/><p>1/12</p><p>2024</p><p>Screen Print</p>'>
+      <img src="images/printmaking/greenhouse.jpg" data-category="printmaking" style="width:100%" onclick="onClick(this)" alt="<p><i>The Green House</i></p><p>Artist Proof</p><p>2023</p><p>Screen Print</p>">
+      <img src="images/printmaking/precipitating.jpg" data-category="printmaking" style="width:100%" onclick="onClick(this)" alt="<p><i>Precipitating</i></p><p>2023</p><p>Screen Print</p>">
+    </div>
+  </div>
+  <!-- Photo grid painting-->
+  <div class="gallery w3-row">
+    <div class="w3-third">
+    </div>
+
+    <div class="w3-third">
+      
+    </div>
+    
+    <div class="w3-third">
+    </div>
   </div>
 
 
